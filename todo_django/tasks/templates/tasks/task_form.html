@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Form</title>
+  <!-- Include Vue.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- Define the TaskForm Vue component inline -->
+    <task-form></task-form>
+  </div>
+
+  <!-- Define your Vue component inline -->
+  <script>
+    // Define TaskForm Vue component
+    Vue.component('task-form', {
+      data() {
+        return {
+          newTask: { title: '', description: '' }
+        };
+      },
+      methods: {
+        async addTask() {
+          try {
+            // Simulate sending data to Django API
+            console.log('Sending task data:', this.newTask);
+            // Reset form data
+            this.newTask = { title: '', description: '' };
+          } catch (error) {
+            console.error('Error adding task:', error);
+          }
+        }
+      },
+      template: `
+        <div>
+          <h2>Add Task</h2>
+          <form @submit.prevent="addTask">
+            <input type="text" v-model="newTask.title" placeholder="Title" required>
+            <input type="text" v-model="newTask.description" placeholder="Description" required>
+            <button type="submit">Add Task</button>
+          </form>
+        </div>
+      `
+    });
+
+    // Initialize Vue app
+    new Vue({
+      el: '#app'
+    });
+  </script>
+</body>
+</html>
