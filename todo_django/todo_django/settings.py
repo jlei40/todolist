@@ -19,8 +19,7 @@ from django.core.exceptions import ImproperlyConfigured
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # JSON-based secrets module
-with open(os.path.join(
-        BASE_DIR, 'todo_django', 'secrets.json')) as f:
+with open(os.path.join(BASE_DIR.parent, 'secrets.json')) as f:
     secrets = json.loads(f.read())
 
 def get_secret(setting, secrets=secrets):
@@ -37,7 +36,7 @@ def get_secret(setting, secrets=secrets):
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^(4!b^j^mg-))7ulo*%)8_f4z$92^9hxp%x2!hx1&c*(r2p_b^'
+SECRET_KEY = get_secret('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -97,7 +96,7 @@ WSGI_APPLICATION = 'todo_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
         "NAME": get_secret('database_name'),
         "USER": get_secret('database_user'),
         "PASSWORD": get_secret('database_pwd'),
