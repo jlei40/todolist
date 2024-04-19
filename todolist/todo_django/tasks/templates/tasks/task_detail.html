@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="{% url 'tasks:task_list' %}" style="color: white;">Task list</a><br/>
+<a href="{% url 'tasks:task_update' object.id %}" style="color: white;">Update Task</a><br/>
+<a href="{% url 'tasks:task_delete' object.id %}" style="color: white;">Delete Task</a><br/>
+<h1 style="color: white;">{{ object.name }}</h1>
+{% for tag in object.tags.all %}
+{{ tag.name }}<br/>
+{% endfor %}
+<br/>
+<p style="color: white;">Description: {{ object.description }}</p><br/>
+<p style="color: white;">Date: {{ object.date }}</p> <br/>
+
+{% endblock content %}

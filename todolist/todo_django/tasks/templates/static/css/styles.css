@@ -1,0 +1,38 @@
+/* styles.css */
+
+.task-container {
+    border: 2px solid;
+    padding: 6px;
+}
+
+.task-header {
+    border-bottom: 2px solid;
+}
+
+.tag-list {
+    list-style-type: none;
+    padding-left: 0;
+    padding-top: 8px;
+    margin: 0;
+}
+
+.tag {
+    background-color: #99b3ff;
+    display: inline-block;
+    padding: 3px;
+    border-radius: 8px;
+}
+
+.task-description {
+    /* Add styles for task description */
+}
+
+.task-date {
+    /* Add styles for task date */
+}
+
+body {
+     background-color: black;
+     color: white;
+ }
+ 

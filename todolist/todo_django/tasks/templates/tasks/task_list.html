@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<a href="{% url 'tasks:task_create' %}">New task</a><br/><br/>
+<a href="{% url 'tasks:tag_create' %}">New tag</a><br/><br/>
+<h4> Tasks: </h4>
+{% for task in object_list %}
+<div style='border:2px solid;'>
+    <div style='padding:6px;'>
+    <div style='border-bottom:2px solid'><a href="{% url 'tasks:task_detail_bis' task.id %}">{{task.name}}</a></div> 
+    <ul style='list-style-type: none; padding-left:0; padding-top:8px; margin:0'>
+        {% for tag in task.tags.all %}
+        <li style='background-color:#99b3ff; display:initial;padding:3px;border-radius:8px;' >{{tag}}</li>
+        {% endfor %}
+    </ul>
+    {{task.description}} <br/>
+    {{task.date}}
+</div>
+</div><br/>
+{% endfor %}
+{% endblock content %}
+
+{% block head %}
+    {{ block.super }}
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+    </style>
+{% endblock head %}

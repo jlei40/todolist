@@ -27,4 +27,6 @@ coverage
 
 *.tsbuildinfo
 
+env_3.11.5
+env_node_20.11.1
 secrets.json

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load django_vite %}
+{% block head %}
+    <script type="text/javascript">
+        ext_csrf_token="{{csrf_token}}";
+        ext_tag_list = "{{ tag_list | safe }}";
+    </script>
+{% endblock head %}
+{% block content %}
+<a href="{% url 'tasks:task_list' %}">Tasks list</a><br/><br/>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
+
+    <div id="appcreate">
+        <div token="{{csrf_token}}"></div>
+        <appcreate></appcreate>
+    </div>
+{% endblock content %}
+
+{% block js %}
+    {{ block.super }}
+    <script>
+        var ext_csrf_token = "{{ csrf_token }}"
+        var ext_tag_list = {{ tag_list | safe }}
+    </script>
+    {% vite_hmr_client %}
+    {% vite_asset 'src/apps/task_create/task_create.js' %} 
+{% endblock js %}
