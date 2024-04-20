@@ -98,7 +98,7 @@ class TaskCreateView(CreateView):
 
 class TaskUpdateView(UpdateView):
     model = Task
-    template_name_suffix = '_edit'
+    template_name_suffix = '_form'
     fields = ["name", "description", "tags",  "date"]
     
     def form_valid(self, form):
