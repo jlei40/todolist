@@ -4,7 +4,8 @@
 <a href="{% url 'tasks:task_list' %}" style="color: #0d6efd;">Task list</a><br/>
 <a href="{% url 'tasks:task_update' object.id %}" style="color: #0d6efd;">Update Task</a><br/>
 <a href="{% url 'tasks:task_delete' object.id %}" style="color: #0d6efd;">Delete Task</a><br/>
-<h1 style="color: 99b3ff;">{{ object.name }}</h1>
+
+<h1 style="color: black;">{{ object.name }}</h1>
 {% for tag in object.tags.all %}
 {{ tag.name }}<br/>
 {% endfor %}

@@ -99,7 +99,7 @@ class TaskCreateView(CreateView):
 class TaskUpdateView(UpdateView):
     model = Task
     template_name_suffix = '_edit'
-    fields = ["name", "description", "homework", "tags",  "date"]
+    fields = ["name", "description", "tags",  "date"]
     
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -110,25 +110,20 @@ class TaskUpdateView(UpdateView):
         return response
     
     def get_context_data(self, **kwargs):
-       context = super().get_context_data(**kwargs)
-       task_dico = model_to_dict(self.object)
-       task_dico["date"] = task_dico["date"].strftime(
-           "%Y-%m-%d"
-       )
-       tags = task_dico["tags"]
-       task_tag_list = []
-       for tag in tags:
-           task_tag_list.append({"id": tag.id, "name": tag.name})
-       task_dico["tags"] = json.dumps(task_tag_list)
-       tag_list = list(Tag.objects.all().values())
-       context["task_dict"] = json.dumps(task_dico)
-       context["tag_list"] = json.dumps(tag_list)
-       print("context", context)
-       return context
-    
+        context = super().get_context_data(**kwargs)
+        task_dico = model_to_dict(self.object)
+        task_dico["date"] = task_dico["date"].strftime("%Y-%m-%d")
+        tags = task_dico["tags"]
+        task_tag_list = [{"id": tag.id, "name": tag.name} for tag in tags]
+        task_dico["tags"] = json.dumps(task_tag_list)
+        tag_list = list(Tag.objects.all().values())
+        context["task_dict"] = json.dumps(task_dico)
+        context["tag_list"] = json.dumps(tag_list)
+        return context
+
     def get_success_url(self):
         return reverse_lazy("tasks:task_detail", args=[self.object.id])
-
+    
 class TaskDeleteView(DeleteView):
     model = Task
     success_url = reverse_lazy("tasks:task_list")
@@ -141,26 +136,7 @@ class TaskDeleteView(DeleteView):
                 task_name=self.object.name))
         return response
 
-class TaskUpdatebisView(View):
-    def post(self, request, *args, **kwargs):
-       task = get_object_or_404(Task, pk=self.kwargs["pk"])
-       form = TaskForm(request.POST, instance=task)
-       if form.is_valid():
-           form.save()
-           return JsonResponse({"success": True})
-       else:
-           return JsonResponse({"success": False, "errors": form.errors})
-    
-class TaskDetailbisView(TemplateView):
-    template_name = "tasks/task_detailbis.html"
-    def get(self, request, *args, **kwargs):
-        task = get_object_or_404(Task, pk=self.kwargs["pk"])
-        return super().get(request, *args, **kwargs)
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['task_id'] = self.kwargs["pk"]
-        return context
-    
+
 class TaskDetailJsView(View):
     def get(self, request, *args, **kwargs):
         task = get_object_or_404(Task, pk=self.kwargs["pk"])
