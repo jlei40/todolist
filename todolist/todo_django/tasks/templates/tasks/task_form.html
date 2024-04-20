@@ -25,7 +25,7 @@
     {{ block.super }}
     <script>
         var ext_csrf_token = "{{ csrf_token }}"
-        var ext_tag_list = {{ tag_list | safe }}
+        var ext_tag_list = "{{ tag_list | safe }}";
     </script>
     {% vite_hmr_client %}
     {% vite_asset 'src/apps/task_create/task_create.js' %} 
