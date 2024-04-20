@@ -10,7 +10,7 @@
 {% for task in object_list %}
 <div style='border:2px solid;'>
     <div style='padding:6px;'>
-    <div style='border-bottom:2px solid'><a href="{% url 'tasks:task_detail_bis' task.id %}">{{task.name}}</a></div> 
+    <div style='border-bottom:2px solid'><a href="{% url 'tasks:task_detail' task.id %}">{{task.name}}</a></div> 
     <ul style='list-style-type: none; padding-left:0; padding-top:8px; margin:0'>
         {% for tag in task.tags.all %}
         <li style='background-color:#99b3ff; display:initial;padding:3px;border-radius:8px;' >{{tag}}</li>

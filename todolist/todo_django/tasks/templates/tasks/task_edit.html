@@ -23,7 +23,7 @@
         var ext_csrf_token = '{{ csrf_token }}'
         var ext_form = `{{form.as_p | safe}}`
         var ext_task_dict = "{{ task_dict | safe }}";
-        var ext_tag_list = "{{ tag_list | safe }}";
+        var ext_tag_list = "{{ tag_list | safe }}"
         var ext_update_bis_url = "{% url 'tasks:task_update_bis' object.id %}"
         
     </script>

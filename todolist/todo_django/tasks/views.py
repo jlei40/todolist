@@ -22,7 +22,7 @@ class TagDetailView(DetailView):
 
 class TagCreateView(CreateView):
     model = Tag
-    fields = ["name", "homework"]
+    fields = ["name",]
 
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -37,7 +37,7 @@ class TagCreateView(CreateView):
 
 class TagUpdateView(UpdateView):
     model = Tag
-    fields = ["name", "homework"]
+    fields = ["name",]
     
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -58,7 +58,7 @@ class TaskDetailView(DetailView):
 
 class TaskCreateView(CreateView):
     model = Task
-    fields = ["name", "description", "homework", "tags",  "date"]
+    fields = ["name", "description", "tags",  "date"]
 
     def form_valid(self, form):
         response = super().form_valid(form)
