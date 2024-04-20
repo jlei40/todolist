@@ -24,11 +24,14 @@
 }
 
 .task-description {
-    /* Add styles for task description */
+    margin-top: 10px;
+    font-size: 16px;
 }
 
 .task-date {
-    /* Add styles for task date */
+    margin-top: 5px; 
+    font-size: 14px;
+    color: #ccc;
 }
 
 body {
