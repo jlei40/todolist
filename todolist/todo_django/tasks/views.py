@@ -34,7 +34,24 @@ class TagCreateView(CreateView):
 
     def get_success_url(self):
     	return reverse_lazy("tasks:tag_detail", args=[self.object.id])
+ 
+class TagDeleteView(DeleteView):
+    model = Tag
+    success_url = reverse_lazy("tasks:tag_list")
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(
+            self.request,
+            'Tag "{tag_name}" has been deleted'.format(tag_name=self.object.name)
+        )
+        return response
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        self.object.delete()
+        return HttpResponseRedirect(success_url)
+    
 class TagUpdateView(UpdateView):
     model = Tag
     fields = ["name",]
