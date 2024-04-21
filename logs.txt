@@ -4,20 +4,28 @@ Logs
 Jason: set up environments for wordle project
 Sam: researched project ideas, decided on wordle
 
+-- weekend --
+
 4-15-2024
 Jason: finished login authentication for worldle
 Sam: made the database diagram and models logic
 
 4-16-2024
 Jason: tried to implement worldle but failed 
-
+Sam: (absent due to sprained ankle, physically unable to work)
 
 4-17-2024
 Jason: decided to pivot to a to-do list, set up the environments for the project
-Sam: made the new database diagram for to-do list
+Sam: (absent due to sprained ankle, physically unable to work)
 
 4-18-2024
 Jason: made add task button and got task-list half working
+Sam: (absent due to sprained ankle, physically unable to work)
+
+4-19-2024
+Jason: bug fixed task lisk and adding tasks
+Sam: updated task forms and models, finished task form and created templates for adding, deleting, and editing tasks, also added tag functionality - left a few bugs to fix
 
 4-20-2024
 Jason: updated css, edited urls for homepage and other views, fixed syntax errors, removed useless html files, added tag deletion, got task edit working 
+Sam: made the new database diagram for to-do list, final bug fixes
