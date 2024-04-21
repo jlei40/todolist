@@ -1,0 +1,23 @@
+Logs
+
+4-11-2024
+Jason: set up environments for wordle project
+Sam: researched project ideas, decided on wordle
+
+4-15-2024
+Jason: finished login authentication for worldle
+Sam: made the database diagram and models logic
+
+4-16-2024
+Jason: tried to implement worldle but failed 
+
+
+4-17-2024
+Jason: decided to pivot to a to-do list, set up the environments for the project
+Sam: made the new database diagram for to-do list
+
+4-18-2024
+Jason: made add task button and got task-list half working
+
+4-20-2024
+Jason: updated css, edited urls for homepage and other views, fixed syntax errors, removed useless html files, added tag deletion, got task edit working 
